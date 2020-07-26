@@ -29,6 +29,7 @@ public class ServerSideApiExample {
     
     custFBLeadData.put("lead_event_source", "FB");
     custFBLeadData.put("facebook_lifecycle_stage_name", "LEAD");
+    custFBLeadData.put("lifecycle_stage_name", "LEAD");
     
     CustomData customData = new CustomData();
     	customData
