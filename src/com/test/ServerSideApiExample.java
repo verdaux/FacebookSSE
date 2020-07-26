@@ -2,6 +2,9 @@ package com.test;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.facebook.ads.sdk.APIContext;
 import com.facebook.ads.sdk.APIException;
 import com.facebook.ads.sdk.serverside.Event;
@@ -20,13 +23,18 @@ public class ServerSideApiExample {
     context.setLogger(System.out);
 
     UserData userData = new UserData()
-        .fbc("fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890")
-        .fbp("fb.1.1558571054389.1098115397")
-        .email("joe@eg.com");
+    	.leadId("1234");
 
-    CustomData customData = new CustomData()
-        .currency("usd")
-        .value(123.45F);
+    HashMap<String, String> custFBLeadData = new HashMap<String, String>();
+    
+    custFBLeadData.put("lead_event_source", "FB");
+    custFBLeadData.put("facebook_lifecycle_stage_name", "LEAD");
+    
+    CustomData customData = new CustomData();
+    	customData
+    				.setCustomProperties(custFBLeadData);
+        //.currency("usd")
+        //.value(123.45F);
 
     Event pageViewEvent = new Event();
     pageViewEvent.eventName("Purchase")
